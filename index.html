@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I’m Sorry Nikita ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 1000;
+  }
+
+  nav button {
+    margin: 4px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 20px;
+    background: #ff6f91;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  section {
+    min-height: 100vh;
+    padding: 60px 18px 120px;
+    display: none;
+    text-align: center;
+  }
+
+  section.active {
+    display: block;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: clamp(1.1rem, 4vw, 1.35rem);
+    line-height: 1.9;
+    max-width: 800px;
+    margin: auto;
+    min-height: 160px;
+  }
+
+  .cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Forgive button */
+  .forgive-btn {
+    margin-top: 30px;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    background: #ff4f7a;
+    color: white;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+    100% { transform: scale(1); }
+  }
+
+  /* Floating hearts & petals */
+  .float {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+  }
+</style>
+</head>
+
+<body>
+
+<nav>
+  <button onclick="showPage(1)">1</button>
+  <button onclick="showPage(2)">2</button>
+  <button onclick="showPage(3)">3</button>
+  <button onclick="showPage(4)">4</button>
+  <button onclick="showPage(5)">5</button>
+  <button onclick="showPage(6)">6</button>
+  <button onclick="showPage(7)">7</button>
+  <button onclick="showPage(8)">8</button>
+  <button onclick="showPage(9)">9</button>
+  <button onclick="showPage(10)">10</button>
+</nav>
+
+<section id="page1" class="active">
+  <h1>Hey Nikita ❤️</h1>
+  <p data-text="I made this little website just for you. Every page is filled with words I wish I could say perfectly in person. A simple sorry never felt enough for someone as special as you."></p>
+</section>
+
+<section id="page2">
+  <h1>I’m Truly Sorry</h1>
+  <p data-text="Nikita, I know I hurt you, and that honestly hurts me too. I never wanted to be the reason your smile faded, even for a moment."></p>
+</section>
+
+<section id="page3">
+  <h1>No Excuses</h1>
+  <p data-text="I’m not here to make excuses or justify anything. I just want you to know that I understand my mistake and I regret it deeply."></p>
+</section>
+
+<section id="page4">
+  <h1>You Matter</h1>
+  <p data-text="Your feelings matter to me more than anything. You matter to me more than you probably realize, and I hate knowing I caused you pain."></p>
+</section>
+
+<section id="page5">
+  <h1>Thinking About You</h1>
+  <p data-text="I’ve been thinking about you nonstop — your smile, your kindness, the way you care. I feel lucky to have you in my life."></p>
+</section>
+
+<section id="page6">
+  <h1>I Care Deeply</h1>
+  <p data-text="Nikita, you are important to me. I want to be someone who protects your heart, supports you, and makes you feel safe."></p>
+</section>
+
+<section id="page7">
+  <h1>I Promise</h1>
+  <p data-text="I promise to learn from this moment. I promise to listen better, think more carefully, and treat your feelings with the care they deserve."></p>
+</section>
+
+<section id="page8">
+  <h1>Grateful</h1>
+  <p data-text="I’m grateful for you, for your patience, and for every little thing you bring into my life. You truly mean a lot to me."></p>
+</section>
+
+<section id="page9">
+  <h1>I Hope</h1>
+  <p data-text="I hope you can see how sincere my apology is. My heart is honest, and every word here is meant just for you."></p>
+</section>
+
+<section id="page10">
+  <h1>From My Heart 💖</h1>
+  <p data-text="Nikita, I’m really, truly sorry. If you can find it in your heart to forgive me, it would mean everything to me."></p>
+  <button class="forgive-btn" onclick="forgive()">Forgive Me? 💕</button>
+</section>
+
+<script>
+  let typingInterval;
+  const typingSpeed = 70; // slower typing 💖
+
+  function typeText(element) {
+    clearInterval(typingInterval);
+    const text = element.getAttribute("data-text");
+    element.innerHTML = "";
+    let i = 0;
+
+    typingInterval = setInterval(() => {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+      } else {
+        element.innerHTML += '<span class="cursor">|</span>';
+        clearInterval(typingInterval);
+      }
+    }, typingSpeed);
+  }
+
+  function showPage(num) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    const page = document.getElementById("page" + num);
+    page.classList.add("active");
+    typeText(page.querySelector("p"));
+  }
+
+  function forgive() {
+    alert("Thank you for giving me a chance, Nikita 💖");
+  }
+
+  typeText(document.querySelector("#page1 p"));
+
+  function createFloat() {
+    const el = document.createElement("div");
+    el.className = "float";
+    el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌸";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (Math.random() * 3 + 5) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+  }
+
+  setInterval(createFloat, 500);
+</script>
+
+</body>
+</html>
